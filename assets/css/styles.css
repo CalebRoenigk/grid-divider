@@ -195,6 +195,12 @@ button:active, input[type="button"]:active, input[type="submit"]:active,input[ty
     background-color: var(--black);
 }
 
+#canvas-parent {
+    grid-area: content;
+    width: 100%;
+    height: 100%;
+}
+
 #settings-panel {
     grid-area: settings;
     display: grid;
