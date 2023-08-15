@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Grid Divider</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+    <body>
+        <div id="settings-panel" class="panel">
+            <h2>Settings</h2>
+            <div class="rule"></div>
+            <div id="settings-group">
+                <div class="setting">
+                    <h3>X Cell Count</h3>
+                    <div class="range-setting">
+                        <h4>1</h4>
+                        <input type="range" min="1" max="32" step="1" id="x-cell-count">
+                        <h4>32</h4>
+                    </div>
+                </div>
+                <div class="setting">
+                    <h3>Y Cell Count</h3>
+                    <div class="range-setting">
+                        <h4>1</h4>
+                        <input type="range" min="1" max="32" step="1" id="y-cell-count">
+                        <h4>32</h4>
+                    </div>
+                </div>
+                <div class="rule"></div>
+                <div class="setting">
+                    <h3>Subdivisions</h3>
+                    <div class="range-setting">
+                        <h4>1</h4>
+                        <input type="range" min="1" max="8" step="1" id="y-cell-subdivisions">
+                        <h4>8</h4>
+                    </div>
+                </div>
+                <div class="rule"></div>
+                <div class="setting-horizontal">
+                    <h3>Show Lines</h3>
+                    <input type="checkbox" class="switch" id="show-lines">
+                </div>
+                <div class="setting">
+                    <button id="clear-lines">Clear Lines</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
