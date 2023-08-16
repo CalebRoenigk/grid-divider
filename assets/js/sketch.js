@@ -282,9 +282,6 @@ class GridManager {
     }
 
     drawLines() {
-        noFill();
-        stroke(color('red'));
-        strokeWeight(1);
         this.lines.forEach(l => l.draw());
 
         this.drawLineCurrent();
@@ -292,14 +289,8 @@ class GridManager {
 
     drawLineCurrent() {
         if(this.clicks > 0) {
-            line(this.startLine.x, this.startLine.y, mouseX, mouseY);
+            new Line(this.startLine, createVector(mouseX, mouseY)).draw();
         }
-
-        // noFill();
-        // stroke(color('magenta'));
-        // strokeWeight(8);
-        //
-        // point(mouseX, mouseY);
     }
 
     drawCells() {
@@ -379,10 +370,6 @@ class GridManager {
 
     divideCells(cells) {
         let newCells = [];
-        // if(this.lines.length > 0) {
-        //   console.log("division input:");
-        //   console.log(cells);
-        // }
         if(this.lines.length <= 0) {
             newCells = cells;
             return newCells;
