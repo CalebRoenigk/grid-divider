@@ -105,6 +105,20 @@ class Line {
     }
 
     draw() {
+        noFill();
+        stroke(color("black"));
+        strokeWeight(5);
+
+        point(this.start.x, this.start.y);
+        point(this.end.x, this.end.y);
+        line(this.start.x, this.start.y, this.end.x, this.end.y);
+        
+        noFill();
+        stroke(color("FF7A5C"));
+        strokeWeight(3);
+
+        point(this.start.x, this.start.y);
+        point(this.end.x, this.end.y);
         line(this.start.x, this.start.y, this.end.x, this.end.y);
     }
 
@@ -272,18 +286,14 @@ class GridManager {
 
     drawLineCurrent() {
         if(this.clicks > 0) {
-            noFill();
-            stroke(color('red'));
-            strokeWeight(1);
-
             line(this.startLine.x, this.startLine.y, mouseX, mouseY);
         }
 
-        noFill();
-        stroke(color('magenta'));
-        strokeWeight(8);
-
-        point(mouseX, mouseY);
+        // noFill();
+        // stroke(color('magenta'));
+        // strokeWeight(8);
+        //
+        // point(mouseX, mouseY);
     }
 
     drawCells() {
