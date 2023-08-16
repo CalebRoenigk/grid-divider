@@ -4,7 +4,7 @@ let yCountSlider = document.getElementById("y-cell-count");
 let resolutionSlider = document.getElementById("cell-subdivisions");
 let clearButton = document.getElementById("clear-lines");
 let showLines = document.getElementById("show-lines");
-let tipHover = document.querySelector("#tip-selector > .content-reset");
+let undoButton = document.getElementById("undo-line");
 let backgroundColor;
 let strokeThickness = 2;
 
@@ -35,6 +35,10 @@ function setup() {
         showLinesToggle();
     };
     showLines.checked = true;
+
+    undoButton.onclick = function() {
+        gridManager.undoLine();
+    };
 }
 
 function showTips() {
@@ -391,5 +395,12 @@ class GridManager {
         })
 
         return newCells;
+    }
+
+    undoLine() {
+        if(this.lines.length > 0) {
+            this.lines.pop();
+            this.needUpdate = true;
+        }
     }
 }
