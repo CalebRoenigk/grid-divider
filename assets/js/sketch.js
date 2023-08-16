@@ -107,19 +107,25 @@ class Line {
     draw() {
         noFill();
         stroke(color("black"));
-        strokeWeight(5);
+        strokeWeight(7);
+        
+        line(this.start.x, this.start.y, this.end.x, this.end.y);
 
+        strokeWeight(11);
+        
         point(this.start.x, this.start.y);
         point(this.end.x, this.end.y);
-        line(this.start.x, this.start.y, this.end.x, this.end.y);
         
         noFill();
-        stroke(color("FF7A5C"));
+        stroke(color("#FF7A5C"));
         strokeWeight(3);
+        
+        line(this.start.x, this.start.y, this.end.x, this.end.y);
 
+        strokeWeight(7);
+        
         point(this.start.x, this.start.y);
         point(this.end.x, this.end.y);
-        line(this.start.x, this.start.y, this.end.x, this.end.y);
     }
 
     lineIntersects(line) {
