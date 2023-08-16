@@ -103,27 +103,29 @@ class Line {
         this.start = start;
         this.end = end;
     }
-
-    draw() {
+    
+    drawOutline() {
         noFill();
         stroke(color("black"));
         strokeWeight(7);
-        
+
         line(this.start.x, this.start.y, this.end.x, this.end.y);
 
         strokeWeight(11);
-        
+
         point(this.start.x, this.start.y);
         point(this.end.x, this.end.y);
-        
+    }
+    
+    drawLine() {
         noFill();
         stroke(color("#FF7A5C"));
         strokeWeight(3);
-        
+
         line(this.start.x, this.start.y, this.end.x, this.end.y);
 
         strokeWeight(7);
-        
+
         point(this.start.x, this.start.y);
         point(this.end.x, this.end.y);
     }
@@ -282,14 +284,22 @@ class GridManager {
     }
 
     drawLines() {
-        this.lines.forEach(l => l.draw());
+        this.lines.forEach(l => l.drawOutline());
 
-        this.drawLineCurrent();
+        this.drawLineCurrent(true);
+
+        this.lines.forEach(l => l.drawLine());
+
+        this.drawLineCurrent(false);
     }
 
-    drawLineCurrent() {
+    drawLineCurrent(drawOutline = true) {
         if(this.clicks > 0) {
-            new Line(this.startLine, createVector(mouseX, mouseY)).draw();
+            if(drawOutline) {
+                new Line(this.startLine, createVector(mouseX, mouseY)).drawOutline();
+            } else {
+                new Line(this.startLine, createVector(mouseX, mouseY)).drawLine();
+            }
         }
     }
 
