@@ -4,6 +4,7 @@ let yCountSlider = document.getElementById("y-cell-count");
 let resolutionSlider = document.getElementById("cell-subdivisions");
 let clearButton = document.getElementById("clear-lines");
 let showLines = document.getElementById("show-lines");
+let tipHover = document.querySelector("#tip-selector > .content-reset");
 let backgroundColor;
 let strokeThickness = 2;
 
@@ -34,6 +35,26 @@ function setup() {
         showLinesToggle();
     };
     showLines.checked = true;
+}
+
+function showTips() {
+    var elements = document.querySelectorAll('.tip-box');
+    // Convert the NodeList to an array
+    let tips = Array.from(elements);
+    tips.forEach(function (t) {
+        t.style.opacity = 100;
+        t.style.transform = "translateY(-110%)";
+    })
+}
+
+function hideTips() {
+    var elements = document.querySelectorAll('.tip-box');
+    // Convert the NodeList to an array
+    let tips = Array.from(elements);
+    tips.forEach(function (t) {
+        t.style.opacity = 0;
+        t.style.transform = "translateY(-95%)";
+    })
 }
 
 function draw() {

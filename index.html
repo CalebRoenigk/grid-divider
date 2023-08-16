@@ -9,7 +9,11 @@
         <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
-        <div id="canvas-parent"></div>
+        <div id="canvas-parent">
+            <div class="tip-positioner">
+                <div class="tip-box" id="tip-drawing">Click to draw lines. Hold Shift while drawing to continue the current line.</div>
+            </div>
+        </div>
         <div id="settings-panel" class="panel">
             <h2>Settings</h2>
             <div class="rule"></div>
@@ -20,6 +24,9 @@
                         <h4>1</h4>
                         <input type="range" min="1" max="32" step="1" id="x-cell-count">
                         <h4>32</h4>
+                    </div>
+                    <div class="tip-positioner">
+                        <div class="tip-box">Determines the number of divisions of the grid along each axis</div>
                     </div>
                 </div>
                 <div class="setting">
@@ -38,17 +45,27 @@
                         <input type="range" min="1" max="8" step="1" id="cell-subdivisions">
                         <h4>8</h4>
                     </div>
+                    <div class="tip-positioner">
+                        <div class="tip-box">Controls the maximum number of subdivisions of the grid</div>
+                    </div>
                 </div>
                 <div class="rule"></div>
                 <div class="setting-horizontal">
                     <h3>Show Lines</h3>
                     <input type="checkbox" class="switch" id="show-lines">
+                    <div class="tip-positioner">
+                        <div class="tip-box">Toggles the visiblity of lines you have drawn</div>
+                    </div>
                 </div>
                 <div class="setting">
                     <button id="clear-lines">Clear Lines</button>
+                    <div class="tip-positioner">
+                        <div class="tip-box">Clears all drawn lines</div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div id="tip-selector" onmouseover="showTips()" onmouseout="hideTips()"><div class="content-reset" onmouseover="showTips()" onmouseout="hideTips()">i</div></div>
         <script src="assets/js/sketch.js"></script>
     </body>
 </html>
