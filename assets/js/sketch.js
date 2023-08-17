@@ -5,14 +5,21 @@ let resolutionSlider = document.getElementById("cell-subdivisions");
 let clearButton = document.getElementById("clear-lines");
 let showLines = document.getElementById("show-lines");
 let undoButton = document.getElementById("undo-line");
+let themeAButton = document.getElementById("theme-a");
+let themeBButton = document.getElementById("theme-b");
+let themeCButton = document.getElementById("theme-c");
+let themeDButton = document.getElementById("theme-d");
 let backgroundColor;
 let strokeThickness = 2;
+let themePrimary = "";
+let themeSecondary = "";
 
 function setup() {
     var canvasSize = getCanvasSize();
     var canvas = createCanvas(canvasSize.w, canvasSize.h);
     canvas.parent("canvas-parent");
-    backgroundColor = color('#F4D738');
+    themePrimary = "#F4D738";
+    themeSecondary = "#FF7A5C";
     gridManager = new GridManager(4, 5, 6);
 
     xCountSlider.oninput = function() {
@@ -39,6 +46,44 @@ function setup() {
     undoButton.onclick = function() {
         gridManager.undoLine();
     };
+
+    themeAButton.onclick = function() {
+        setTheme("a");
+    }
+    themeBButton.onclick = function() {
+        setTheme("b");
+    }
+    themeCButton.onclick = function() {
+        setTheme("c");
+    }
+    themeDButton.onclick = function() {
+        setTheme("d");
+    }
+}
+
+function setTheme(theme) {
+    document.body.classList.remove('theme-a', 'theme-b', 'theme-c', 'theme-d');
+    switch(theme) {
+        default:
+        case "a":
+            themePrimary = "#F4D738";
+            themeSecondary = "#FF7A5C";
+            break;
+        case "b":
+            themePrimary = "#CBEB2A";
+            themeSecondary = "#B592F7";
+            break;
+        case "c":
+            themePrimary = "#066EFF";
+            themeSecondary = "#D772FF";
+            break;
+        case "d":
+            themePrimary = "#17A230";
+            themeSecondary = "#F83D13";
+            break;
+    }
+    document.body.classList.add('theme-' + theme);
+    forceCellUpdate();
 }
 
 function showTips() {
@@ -62,7 +107,7 @@ function hideTips() {
 }
 
 function draw() {
-    background(backgroundColor);
+    background(themePrimary);
     gridManager.update();
 }
 
@@ -119,7 +164,7 @@ class Line {
     
     drawLine() {
         noFill();
-        stroke(color("#FF7A5C"));
+        stroke(themeSecondary);
         strokeWeight(3);
 
         line(this.start.x, this.start.y, this.end.x, this.end.y);
@@ -222,7 +267,7 @@ class Cell {
     }
     
     drawCell() {
-        fill(backgroundColor);
+        fill(themePrimary);
         stroke(color('black'));
         strokeWeight(strokeThickness);
 
